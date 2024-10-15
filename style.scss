@@ -1,0 +1,117 @@
+$primary-color: #ff6f61;
+$secondary-color: #f44336;
+$text-color: #e5e5e5;
+$background-color: #1b1b1b;
+$card-background: #2c2c2c;
+$font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+@mixin breakpoint($point) {
+    @if $point == mobile {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+}
+
+body {
+    font-family: $font-family;
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+    color: $text-color;
+
+    header {
+        background-color: darken($primary-color, 5%);
+        color: $text-color;
+        padding: 2em 0;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+    }
+
+    .about-me {
+        padding: 40px;
+        margin: 40px auto;
+        max-width: 800px;
+        background-color: $card-background;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            color: $primary-color;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.7;
+            font-size: 1.2em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+
+            li {
+                padding: 10px 0;
+                font-size: 1.1em;
+                color: #d6d6d6;
+
+                &::before {
+                    content: "•";
+                    color: $primary-color;
+                    font-weight: bold;
+                    display: inline-block;
+                    width: 1em;
+                    margin-left: -1em;
+                }
+            }
+        }
+    }
+
+    footer {
+        padding: 20px 0;
+        background-color: #181818;
+        color: $text-color;
+        text-align: center;
+        font-size: 0.9em;
+
+        a {
+            color: $primary-color;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+@include breakpoint(mobile) {
+    .about-me {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .about-me h2 {
+        font-size: 1.8em;
+    }
+
+    .about-me p {
+        font-size: 1.1em;
+    }
+}
